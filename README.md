@@ -1,6 +1,6 @@
 # How to run fusioncatcher
-## How to create synthetic data
-Define the file `genes_panels.txt` where there are the genes to be used to create the dataset.
+## How to create synthetic data [#1]
+Define the file `genes_panels.txt` where there are the genes to be used to create the data.
 
 ### Fusim
 Fusim allows you to generate merges from `genes_panels.txt`.
@@ -38,10 +38,10 @@ java -jar ./fusim-0.2.2/fusim.jar \
         --cds-only \
         --auto-correct-orientation
 ```
-Run the following python script `fusim_dataset.py` to form all possible merges between genes contained in `genes_panel.txt`.
+Run the following python script `fusim_data.py` to form all possible merges between genes contained in `genes_panel.txt`.
 
 ### ART ILLUMINA
-ART ILLUMINA is the tool that allows you to obtain read synthetics from fasta files.
+ART ILLUMINA is the tool that allows you to obtain synthetics read from fasta files.
 
 To install ART ILLUMINA install the following package:
 ```shell
@@ -49,11 +49,12 @@ apt install art-nextgen-simulation-tools
 ```
 
 ART ILLUMINA takes a folder of fasta files and returns the synthetic reads.
-Run the following python script `art_dataset.py` to get the reads of all fasta files obtained from fusim.
+Run the following python script `art_data.py` to get the reads of all fasta files obtained from fusim.
 
 ---
 
 ## Fusion Catcher
+### Run Fusion Catcher using human_v102
 Download human_v102 inside the data folder by running the following command:
 ```shell
 mkdir -p data
@@ -75,7 +76,7 @@ sudo docker run -v "$(pwd)/data":/opt/fusioncatcher/v1.30/data -it fusioncatcher
 
 Once the container is started enter the fusioncatcher installation folder, to run the tool call the python file `fusioncatcher.py` contained in the bin folder.
 
-Usage ([Documentazione](https://github.com/ndaniel/fusioncatcher/blob/master/doc/manual.md#6---usage)):
+Usage ([Docs](https://github.com/ndaniel/fusioncatcher/blob/master/doc/manual.md#6---usage)):
 ```shell
 python2 fusioncatcher.py \
 -d /some/human/data/directory/ \
@@ -83,7 +84,7 @@ python2 fusioncatcher.py \
 -o /some/output/directory/
 ```
 
-Usage with huma_v102:
+Usage with human_v102:
 ```shell
 cd /opt/fusioncatcher/v1.30/
 python2 bin/fusioncatcher.py -d data/human_v102 -i some/input/directory/containing/fastq/files/ -o /some/output/directory/
@@ -168,4 +169,4 @@ Table 1 - Description of columns contained in `final-list_candidate-fusion-genes
 | **Predicted\_fused\_transcripts** | All possible known fused transcripts in format ENSEMBL-TRANSCRIPT-1:POSITION-1/ENSEMBLE-TRANSCRIPT-B:POSITION-2, where are fused the sequence 1:POSITION-1 of transcript ENSEMBL-TRANSCRIPT-1 with sequence POSITION-2:END of transcript ENSEMBL-TRANSCRIPT-2 |
 | **Predicted\_fused\_proteins** | Predicted amino acid sequences of all possible fused proteins (separated by ";").  |
 
-For more information on the abbreviations used by Fusion Catcher visit [this gitub](https://github.com/ndaniel/fusioncatcher/blob/master/doc/manual.md#6---usage).
+For more information on the abbreviations used by Fusion Catcher visit [this github](https://github.com/ndaniel/fusioncatcher/blob/master/doc/manual.md#6---usage).
