@@ -1,5 +1,5 @@
 # How to run fusioncatcher
-## How to create synthetic data [#1]
+## How to create synthetic data
 Define the file `genes_panels.txt` where there are the genes to be used to create the data.
 
 ### Fusim
